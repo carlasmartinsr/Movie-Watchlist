@@ -450,7 +450,7 @@ html {
 
 .bar-dark-theme:focus,.bar-dark-theme:active, .bar-dark-theme:focus-visible {
   background-color: #CCCCCC;
-  color: #555555;;
+  color: #fcf9f9;
 }
 
 .search-bar.bar-dark-theme:-webkit-autofill,
