@@ -109,7 +109,7 @@ async function showMoviesListSearch(){
     await Promise.all(movieData.map(async info => {
     const title = info.Title;
     try {
-      const res = await fetch( `http://www.omdbapi.com/?t=${title}&apikey=25510fb5`)
+      const res = await fetch( `https://www.omdbapi.com/?t=${title}&apikey=25510fb5`)
       const data = await res.json()
       showSearchMovies(data.imdbID, data.Title,data.Poster,data.imdbRating,data.Runtime, data.Genre, data.Plot)
       } catch (error) {
@@ -129,7 +129,6 @@ async function showMoviesListSearch(){
       removeDarkThemeIcons(iconPlus)
       removeDarkThemeWatchlist(btnWatchlist , movieDescription)
   }   
-  
   }catch(error){
     updateDOMElements(false)
   }
