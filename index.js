@@ -91,7 +91,7 @@ function updateDOMElements(isDataFound) {
 
 async function fetchMovieTitle(title){
   try{
-    const res = await fetch( `http://www.omdbapi.com/?s=${title}&apikey=25510fb5`)
+    const res = await fetch( `https://www.omdbapi.com/?s=${title}&apikey=25510fb5`)
     const data = await res.json()
     return data.Search  
     }
@@ -108,7 +108,7 @@ async function showMoviesListSearch(){
   await Promise.all(movieData.map(async info => {
   const title = info.Title;
   try {
-    const res = await fetch( `http://www.omdbapi.com/?t=${title}&apikey=25510fb5`)
+    const res = await fetch( `https://www.omdbapi.com/?t=${title}&apikey=25510fb5`)
     const data = await res.json()
     showSearchMovies(data.imdbID, data.Title,data.Poster,data.imdbRating,data.Runtime, data.Genre, data.Plot)
     } catch (error) {
@@ -169,7 +169,7 @@ function addMovieStorage(imdbID,title,poster,imdbRating, runtime,genre,plot){
 async function handleAddToWatchlistClick(e) {
   if (e.target.id="add-watchlist"){
     try{
-      const res = await fetch( `http://www.omdbapi.com/?i=${e.target.dataset.imdb}&apikey=25510fb5`)
+      const res = await fetch( `https://www.omdbapi.com/?i=${e.target.dataset.imdb}&apikey=25510fb5`)
       const data = await res.json()
       addMovieStorage(data.imdbID,data.Title, data.Poster,data.imdbRating, data.Runtime,data.Genre,data.Plot)
     } catch( e){
