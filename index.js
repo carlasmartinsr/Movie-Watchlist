@@ -158,15 +158,10 @@ function addMovieStorage(imdbID,title,poster,imdbRating, runtime,genre,plot){
 
  
   const isNewMovie = movieWatchlist.some((movie) =>{ 
-    return movie.ID ===newMovieID})
-  console.log(isNewMovie)
-    if (!isNewMovie) {
-        movieWatchlist.push(movie)
-        console.log(movieWatchlist)
-        const watchlistStringi= JSON.stringify(movieWatchlist)
-        localStorage.setItem("watchlist",watchlistStringi)
-        //localStorage.clear()
-    }
+    return movie.ID ===newMovieID});
+  if (!isNewMovie) movieWatchlist.push(movie)
+  const watchlistStringi= JSON.stringify(movieWatchlist)
+  localStorage.setItem("watchlist",watchlistStringi)
 }
 
 

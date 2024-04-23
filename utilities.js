@@ -25,6 +25,12 @@ function applyDarkThemeIcons(icons){
   }
  }
 
+ function applyDarkThemeIcon(icon){
+  if(typeof icon !=="undefined"){
+    icon.classList.add("icon-dark-theme")
+  }
+ }
+
 function applyDarkThemeWatchlist(btns, elements){
   if(typeof btns !=="undefined"){
     btns.forEach(btn =>{
@@ -59,6 +65,12 @@ function removeDarkTheme(){
     }
 }
 
+function removeDarkThemeIcon(icon){
+  if(typeof icon !=="undefined"){
+    icon.classList.remove("icon-dark-theme")
+  }
+ }
+
 function removeDarkThemeWatchlist(btns, elements){
   if(typeof btns !=="undefined"){
     btns.forEach(btn =>{
@@ -74,5 +86,5 @@ function removeDarkThemeWatchlist(btns, elements){
  
 
 
-export {applyDarkTheme,applyDarkThemeSearch,applyDarkThemeIcons, applyDarkThemeWatchlist, 
-    removeDarkTheme, removeDarkThemeSearch, removeDarkThemeIcons,  removeDarkThemeWatchlist };
+export {applyDarkTheme,applyDarkThemeSearch,applyDarkThemeIcons, applyDarkThemeIcon, applyDarkThemeWatchlist, 
+    removeDarkTheme, removeDarkThemeSearch, removeDarkThemeIcons,  removeDarkThemeIcon,removeDarkThemeWatchlist };
