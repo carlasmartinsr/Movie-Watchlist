@@ -442,10 +442,7 @@ html {
 }
 
 .bar-dark-theme{
- background-color: #4B4B4B;
- background-color: #555555;
- background-color: #A5A5A5;
- color:#CCCCCC;
+  background-color: #A5A5A5;
 }
 
 .bar-dark-theme:focus,.bar-dark-theme:active, .bar-dark-theme:focus-visible {
