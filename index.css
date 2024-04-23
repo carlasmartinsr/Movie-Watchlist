@@ -199,6 +199,24 @@ html {
     font-weight: bold;
   }
 
+  .data-initial-link{
+    text-decoration: none;
+    cursor: pointer;
+    color: #63C7B2;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: all 0.2s ease-in;
+  }
+
+  .data-initial-link:hover{
+   transform: scale(1.05);
+    
+  }
+
+  .data-initial-link:active, .data-initial-link:visited {
+    color: #63C7B2;
+  }
+
   .icon-initial{
     width: 6.25em;
     filter: grayscale(100%);
