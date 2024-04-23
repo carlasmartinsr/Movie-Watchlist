@@ -1,12 +1,12 @@
-import {applyDarkTheme,applyDarkThemeIcons,applyDarkThemeIcon, applyDarkThemeWatchlist,
-  removeDarkTheme, removeDarkThemeIcons,  removeDarkThemeIcon, removeDarkThemeWatchlist } from "./utilities.js";
+import {applyDarkTheme,applyDarkThemeIcons,applyDarkThemeWatchlist,
+  removeDarkTheme, removeDarkThemeIcons, removeDarkThemeWatchlist } from "./utilities.js";
 
 const movieCardWatchlist = document.getElementById("movie-card-watchlist")
 const viewDataInitial =document.getElementById("view-data-initial")
 const movieContainer = document.getElementById("movie-container")
 
 const themeSwitchCheckbox = document.getElementById("theme-switch-checkbox")
-let btnWatchlist, movieDescription, iconMinus, iconPlus;
+let btnWatchlist, movieDescription, iconMinus;
 
 let isDarkTheme="" 
 let movieCardHTML=""
@@ -31,18 +31,16 @@ document.addEventListener("DOMContentLoaded", initializeTheme)
 
 
 function applyTheme(isDarkTheme){
+  console.log(iconMinus)
   iconMinus =document.querySelectorAll(".fa-circle-minus")
-  iconPlus = document.querySelector(".fa-circle-plus")
   btnWatchlist =  document.querySelectorAll(".btn-watchlist")
   movieDescription= document.querySelectorAll(".movie-description")
   if (isDarkTheme){
     applyDarkTheme() 
-    applyDarkThemeIcon(iconPlus)
     applyDarkThemeIcons(iconMinus)
     applyDarkThemeWatchlist(btnWatchlist,movieDescription)
    }else{
     removeDarkTheme()
-    removeDarkThemeIcon(iconPlus)
     removeDarkThemeIcons(iconMinus)
     removeDarkThemeWatchlist(btnWatchlist,movieDescription)
 }
@@ -53,7 +51,7 @@ themeSwitchCheckbox.addEventListener("change",themeSwitch)
 
 //Load Movies Watchlist 
 
- function showWatchlist(movieList){
+function showWatchlist(movieList){
   movieCardHTML=""
   movieList.forEach(movie => {
   return  movieCardHTML+=
@@ -69,7 +67,7 @@ themeSwitchCheckbox.addEventListener("change",themeSwitch)
         <p class="movie-duration">${movie.runtime}</p>
         <p class="movie-category">${movie.genre}</p>
       </div>
-      <button class="btn-watchlist"  id="delete-watchlist" type="button" data-ID="${movie.ID}" ><i class="fa-solid fa-circle-minus"></i>Watchlist</button>
+      <button class="btn-watchlist" id="delete-watchlist" type="button" data-ID="${movie.ID}" ><i class="fa-solid fa-circle-minus"></i>Watchlist</button>
       </div>
       <p class="movie-description">${movie.plot}</p>
     </div>
@@ -78,10 +76,11 @@ themeSwitchCheckbox.addEventListener("change",themeSwitch)
 }
 
 
- function loadWatchlist(e){
-  if(e.key=watchlist){
+function loadWatchlist(e){
+  if(e.key===watchlist){
+    console.log("load")
     const storedWatchlist = localStorage.getItem("watchlist")
-  if (storedWatchlist){
+  if (watchlistUser.length>0){
      watchlistUser =JSON.parse(storedWatchlist)
      viewDataInitial.style.display="none"
     movieCardWatchlist.style.display="flex"
@@ -92,16 +91,17 @@ themeSwitchCheckbox.addEventListener("change",themeSwitch)
   }
 } 
 
+
+
 function updateUIWithWatchlist() {
 const storedWatchlist = localStorage.getItem("watchlist")
-  if (storedWatchlist){
-     watchlistUser =JSON.parse(storedWatchlist)
+watchlistUser =JSON.parse(storedWatchlist)
+if (watchlistUser.length>0) {
      viewDataInitial.style.display="none"
      movieCardWatchlist.style.display="flex"
      showWatchlist(watchlistUser)
      movieCardWatchlist.innerHTML = movieCardHTML
   }
-  console.log(storedWatchlist.length)
   const isDarkTheme = localStorage.getItem("darkTheme");
   if (isDarkTheme === "true") {
     applyTheme(isDarkTheme);
@@ -118,7 +118,7 @@ window.addEventListener('storage', loadWatchlist)
 
 //Delete Movie from Watchlist
  
- function deleteMovieWatchlist(e){
+function deleteMovieWatchlist(e){
   if (e.target.id==="delete-watchlist"){
     const idMovieDelete = e.target.dataset.id
     const updateWatchlist = watchlistUser.filter(movie=>{
@@ -126,10 +126,20 @@ window.addEventListener('storage', loadWatchlist)
   })
   const watchlistStringi = JSON.stringify(updateWatchlist)
   localStorage.setItem("watchlist",watchlistStringi)
-  updateUIWithWatchlist()
+  console.log(updateWatchlist)
+  if(updateWatchlist.length===0){
+    movieCardWatchlist.style.display = "none";
+    viewDataInitial.style.display = "flex"; 
+  }
+  watchlistUser = updateWatchlist;
+  showWatchlist(updateWatchlist)
+  movieCardWatchlist.innerHTML = movieCardHTML
   applyTheme(isDarkTheme)
 }
+
+
 
 }
 
 movieContainer.addEventListener("click",deleteMovieWatchlist) 
+
