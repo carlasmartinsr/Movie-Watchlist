@@ -101,7 +101,7 @@ const storedWatchlist = localStorage.getItem("watchlist")
      showWatchlist(watchlistUser)
      movieCardWatchlist.innerHTML = movieCardHTML
   }
-  console.log(storedWatchlist)
+  console.log(storedWatchlist.length)
   const isDarkTheme = localStorage.getItem("darkTheme");
   if (isDarkTheme === "true") {
     applyTheme(isDarkTheme);
