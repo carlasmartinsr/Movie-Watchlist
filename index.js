@@ -103,17 +103,18 @@ async function fetchMovieTitle(title){
 
 
 async function showMoviesListSearch(){
-  const movieTitleSearch = movieTitle.value
-  const movieData = await fetchMovieTitle(movieTitleSearch)
-  await Promise.all(movieData.map(async info => {
-  const title = info.Title;
-  try {
-    const res = await fetch( `https://www.omdbapi.com/?t=${title}&apikey=25510fb5`)
-    const data = await res.json()
-    showSearchMovies(data.imdbID, data.Title,data.Poster,data.imdbRating,data.Runtime, data.Genre, data.Plot)
-    } catch (error) {
+  try{
+    const movieTitleSearch = movieTitle.value
+    const movieData = await fetchMovieTitle(movieTitleSearch)
+    await Promise.all(movieData.map(async info => {
+    const title = info.Title;
+    try {
+      const res = await fetch( `http://www.omdbapi.com/?t=${title}&apikey=25510fb5`)
+      const data = await res.json()
+      showSearchMovies(data.imdbID, data.Title,data.Poster,data.imdbRating,data.Runtime, data.Genre, data.Plot)
+      } catch (error) {
         console.error('Error fetching movie data:', error);
-    }
+      }
   }));
   updateDOMElements(true);
   isDarkTheme =localStorage.getItem("darkTheme")
@@ -128,9 +129,13 @@ async function showMoviesListSearch(){
       removeDarkThemeIcons(iconPlus)
       removeDarkThemeWatchlist(btnWatchlist , movieDescription)
   }   
+  
+  }catch(error){
+    updateDOMElements(false)
+  }
+}
     
 
-}
 
 searchButton.addEventListener("click",showMoviesListSearch)
 
