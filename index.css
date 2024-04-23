@@ -442,15 +442,13 @@ html {
 }
 
 .bar-dark-theme{
-  background-color: #4B4B4B;
-  background-color: #555555;
   background-color: #A5A5A5;
-  color:#CCCCCC;
+  color: #fcf9f9;
 }
 
 .bar-dark-theme:focus,.bar-dark-theme:active, .bar-dark-theme:focus-visible {
   background-color: #CCCCCC;
-  color: #fcf9f9;
+ 
 }
 
 .search-bar.bar-dark-theme:-webkit-autofill,
