@@ -101,7 +101,7 @@ const storedWatchlist = localStorage.getItem("watchlist")
      showWatchlist(watchlistUser)
      movieCardWatchlist.innerHTML = movieCardHTML
   }
-  else{
+  if(storedWatchlist.length>0){
     viewDataInitial.style.display="flex"
     movieCardWatchlist.style.display="none"
   }
