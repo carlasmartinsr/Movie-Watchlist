@@ -460,6 +460,7 @@ html {
   -webkit-text-fill-color: #555555;
   -webkit-box-shadow: 0 0 0px 1000px #CCCCCC inset;
   transition: background-color 5000s ease-in-out 0s;
+  color: #fcf9f9;
 }
 
 
