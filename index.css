@@ -422,10 +422,17 @@ html {
 
 /* Dark Theme */
 
-.main-dark-theme, .search-btn-dark-theme{
-  background-color: #333232;
+.main-dark-theme{
+  background-color: #393939;
   color: #DFDDDD;
 }
+
+.search-btn-dark-theme{
+ background-color: #474747;
+ color: #63C7B2;
+}
+
+
 
 .elements-dark-theme{
  background-color: #333232;
@@ -434,20 +441,20 @@ html {
 
 
 .bg-dark-theme{
- background-color: #1C1C1C;
+ background-color: #1A1A1A;
  color: #DFDDDD;
 }
 
 .search-dark-theme{
- background-color: #555555;
+ background-color: #2B2B2B;
  color:#CCCCCC;
 }
 
 
 .btn-dark-theme {
- background-color: #4B4B4B;
  background-color: #555555;
  color:#CCCCCC;
+
 }
 
 .icon-dark-theme{
@@ -460,34 +467,29 @@ html {
 }
 
 .bar-dark-theme{
-  background-color: #A5A5A5;
+ background-color: #393939;
+ color: #CCCCCC;
 }
 
 .bar-dark-theme:focus,.bar-dark-theme:active, .bar-dark-theme:focus-visible {
- background-color: #CCCCCC;
- color: #555555;;
+ background-color:#616161;
+  color: #CCCCCC;
 }
 
-.search-bar.bar-dark-theme:-webkit-autofill,
-.search-bar.bar-dark-theme:-webkit-autofill:hover, 
-.search-bar.bar-dark-theme:-webkit-autofill:focus
+.search-bar.bar-dark-theme:autofill,
+.search-bar.bar-dark-theme:autofill:hover, 
+.search-bar.bar-dark-theme:autofill:focus
 {
- -webkit-text-fill-color: #555555;
- -webkit-box-shadow: 0 0 0px 1000px #CCCCCC inset;
+
+ -webkit-text-fill-color: #FFFFFF;
+ box-shadow: 0 0 0px 1000px #616161 inset;  
  transition: background-color 5000s ease-in-out 0s;
-}
+} 
 
 
 .search-btn-dark-theme:hover, .search-btn-dark-theme:active {
  background-color: #514d4d;
 }
-
-
-
-.bg-dark-theme #seach-bar:focus{
- background-color: #514d4d;
-}
-
 
 
 .btn-dark-theme:focus-visible, .btn-dark-theme:active  {
